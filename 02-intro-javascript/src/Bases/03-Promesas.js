@@ -1,4 +1,5 @@
-import { getHeroeById } from "./Bases/data/import-export";
+import { getHeroeById } from "./data/import-export";
+
 /* 
 const promesa = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -26,7 +27,7 @@ const getHeroeByIdAsync = (id) => {
     });
 };
 
-getHeroeByIdAsync(2)
+getHeroeByIdAsync(1)
     .then(
         //(heroe) => console.log("Heroe: ", heroe)
         console.log
