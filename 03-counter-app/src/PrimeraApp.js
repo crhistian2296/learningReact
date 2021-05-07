@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 //solo se dara el valor por defecto si no se crea prop alguna al momento de llamar al componente
-const PrimeraApp = ({ saludo }) => {
+const PrimeraApp = ({ saludo, subtitulo }) => {
     /*     
     const saludo = {
         nombre: "Crhistian",
@@ -24,14 +24,17 @@ const PrimeraApp = ({ saludo }) => {
 
         //Forma rapida
         <>
-            <h1>{saludo}</h1>
-            <p>Para mi primera aplicacion</p>
+            <h1> {saludo} </h1>
+            <p> {subtitulo} </p>
         </>
     );
 };
 
 PrimeraApp.propTypes = {
     saludo: PropTypes.string.isRequired,
+};
+PrimeraApp.defaultProps = {
+    subtitulo: "Hola soy un subtitulo por default",
 };
 
 export default PrimeraApp;
