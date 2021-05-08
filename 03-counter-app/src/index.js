@@ -6,4 +6,4 @@ import "./index.css";
 
 const divRoot = document.querySelector("#root");
 //ReactDom.render(<PrimeraApp saludo="I miss U my love" />, divRoot);
-ReactDom.render(<CounterApp value={2432} />, divRoot);
+ReactDom.render(<CounterApp value={10} />, divRoot);
