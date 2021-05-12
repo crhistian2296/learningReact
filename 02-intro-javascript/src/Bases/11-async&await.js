@@ -1,5 +1,8 @@
 const getImagen = async () => {
+    //correcta
     const apiKey = "nDgyHgCdorDhOADMd6uPqYd3KWt7495f";
+    //Incorrecta
+    // const apiKey = "nDgyHgCdorDhOA3KWtf";
     try {
         //peticion
         const resp = await fetch(`http://api.giphy.com/v1/gifs/random?api_key=${apiKey}`);

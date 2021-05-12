@@ -9,8 +9,8 @@ const PrimeraApp = ({ saludo, subtitulo }) => {
         nombre: "Crhistian",
         edad: 25,
     };
-    //<pre>{JSON.stringify(saludo, null, 1)}</pre>
- */
+    <pre>{JSON.stringify(saludo, null, 2)}</pre>
+    */
 
     //console.log(props);
     //const saludo = "Hola mundo, este es mi primer componente";
