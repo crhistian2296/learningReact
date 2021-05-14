@@ -12,12 +12,21 @@ describe("Pruebas en <PrimeraApp /> ", () => {
         const { getByText } = render(<PrimeraApp saludo={saludo} />);
         expect(getByText(saludo)).toBeInTheDocument();
     });
-     */
+        */
+    let saludo = "Hola soy Goku";
+    let wrapper = shallow(<PrimeraApp saludo={saludo} />);
 
-    test("Deberia de mostrar <PirmeraApp /> correctamente", () => {
-        const saludo = "Hola soy Goku";
-        const wrapper = shallow(<PrimeraApp saludo={saludo} />);
-
+    test("Deberia de mostrar <PrimeraApp /> correctamente", () => {
         expect(wrapper).toMatchSnapshot();
+    });
+
+    test("Debe mostrar el subtitulo enviado pro props", () => {
+        const subtitulo = "Hey, pagame lo que me debes";
+
+        wrapper = shallow(<PrimeraApp saludo={saludo} subtitulo={subtitulo} />);
+
+        const textoParrafo = wrapper.find("#campanilla").text();
+
+        expect(textoParrafo).toBe(subtitulo);
     });
 });

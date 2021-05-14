@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
+//las props entran como objetos que usualmente se desestructuran en los parametros del componente
 const CounterApp = ({ value }) => {
     const [counter, setcounter] = useState(value);
 
@@ -21,11 +22,17 @@ const CounterApp = ({ value }) => {
     return (
         <>
             <h1>CounterApp</h1>
-            <h2> {counter} </h2>
+            <h2 id="contador"> {counter} </h2>
 
-            <button onClick={handleAdd}>Press Me</button>
-            <button onClick={handleReset}>Reset</button>
-            <button onClick={handleSubtract}>-1</button>
+            <button id="b1" onClick={handleAdd}>
+                +1
+            </button>
+            <button id="b2" onClick={handleReset}>
+                Reset
+            </button>
+            <button id="b3" onClick={handleSubtract}>
+                -1
+            </button>
         </>
     );
 };
@@ -33,9 +40,9 @@ const CounterApp = ({ value }) => {
 CounterApp.prototype = {
     value: PropTypes.number.isRequired,
 };
-/* 
+
 CounterApp.defaultProps = {
-    value: 234234,
+    value: 10,
 };
- */
+
 export default CounterApp;

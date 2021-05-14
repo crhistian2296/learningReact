@@ -25,7 +25,7 @@ const PrimeraApp = ({ saludo, subtitulo }) => {
         //Forma rapida
         <>
             <h1> {saludo} </h1>
-            <p> {subtitulo} </p>
+            <p id="campanilla">{subtitulo}</p>
         </>
     );
 };
