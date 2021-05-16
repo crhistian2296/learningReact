@@ -13,19 +13,19 @@ exports[`Pruebas en CounterApp Debe de mostrar <CounterApp /> correctamente 1`] 
      
   </h2>
   <button
-    id="b1"
+    id="bAdd"
     onClick={[Function]}
   >
     +1
   </button>
   <button
-    id="b2"
+    id="bReset"
     onClick={[Function]}
   >
     Reset
   </button>
   <button
-    id="b3"
+    id="b-1"
     onClick={[Function]}
   >
     -1

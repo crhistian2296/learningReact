@@ -27,7 +27,7 @@ describe("Pruebas en CounterApp", () => {
 
     test("Debe de incrementar con el boton +1", () => {
         //Se simula el click
-        wrapper.find("#b1").simulate("click");
+        wrapper.find("#bAdd").simulate("click");
         //Se obtiene el valor nuevo del contador
         const contadorNuevo = getCounterValue(wrapper);
         //console.log(contadorNuevo);
@@ -35,9 +35,21 @@ describe("Pruebas en CounterApp", () => {
     });
 
     test("Debe de decrementar con el boton -1 ", () => {
-        wrapper.find("#b3").simulate("click");
+        wrapper.find("#b-1").simulate("click");
         const contadorNuevo = getCounterValue(wrapper);
         //console.log(contadorNuevo);
         expect(contadorNuevo).toBe(9);
+    });
+
+    test("Debe de colocar el valor por defecto con el boton reset", () => {
+        const wrapper = setCounterApp(20);
+        wrapper.find("#bAdd").simulate("click");
+        wrapper.find("#bAdd").simulate("click");
+        wrapper.find("#bAdd").simulate("click"); //23
+
+        wrapper.find("#bReset").simulate("click");
+
+        const contador = getCounterValue(wrapper);
+        expect(contador).toBe(20);
     });
 });
