@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import AddHero from "./components/AddHero";
+import GifGrid from "./components/GifGrid";
 
 const GifExpertApp = () => {
     // const heroes = ["saitama", "goku", "tanjiro"];
-    const [heroes, setHeroes] = useState(["saitama", "goku", "tanjiro"]);
+    const [heroes, setHeroes] = useState(["saitama"]);
 
     // const handleAdd = () => {
     //     setHeroes((initialState) => [...initialState, "luffy"]);
@@ -20,7 +21,7 @@ const GifExpertApp = () => {
             </button> */}
             <ol>
                 {heroes.map((heroe) => (
-                    <li key={heroe}>{heroe}</li>
+                    <GifGrid key={heroe} hero={heroe}></GifGrid>
                 ))}
             </ol>
         </>
