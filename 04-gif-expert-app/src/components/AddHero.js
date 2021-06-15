@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from 'prop-types'
 
 export default function AddHero({ setHeroes }) {
-    const [inputValue, setInputValue] = useState("Escribe");    //useState tiene valor undefined por defecto
+    const [inputValue, setInputValue] = useState("");    //useState tiene valor undefined por defecto
 
     const handleOnChange = (e) => {
         setInputValue(e.target.value);
