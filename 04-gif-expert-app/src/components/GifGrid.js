@@ -1,41 +1,48 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import GifGridItem from "./GifGridItem";
+import { getGifs } from "../helpers/getGifs";
 
 function GifGrid({ hero }) {
+    const [images, setImages] = useState([]);
 
+    /*
     const [counter, setCounter] = useState(0)
 
     //useEffect([func], [dependencies])
+    */
     useEffect(() => {
-        getGifs()
-    }, [])
-
-    const getGifs = async () => {
-        const url = 'https://api.giphy.com/v1/gifs/search?api_key=NFxoxsrYkc0d1jXPTyypk9DB5KUHltu1&q=Rickand+Morty&limit=10';
-
-        const resp = await fetch(url);
-        const { data } = await resp.json();
-        const gifs = data.map((img) => ({
-            id: img.id,
-            title: img.title,
-            url: img.images?.downsized_medium.url
-        }))
-        console.log({ gifs });
-    }
+        getGifs(hero).then((imgs) => setImages(imgs));
+    }, [hero]);
 
     //getGifs();
 
     return (
         <>
-            <li>{hero}</li>
-            <h3>{counter}</h3>
-            <button type="submit" onClick={() => setCounter(counter + 1)}>+1</button>
+            <h3>{hero}</h3>
+            {/* usando map para imprimir titulos
+            <ol>
+                {images.map(({ id, title }) => (
+                    <li key={id}>{title}</li>
+                ))}
+            </ol> */}
+            {/* Necesarios para ver que hace useEffect
+                <h3>{counter}</h3>
+                <button type="submit" onClick={() => setCounter(counter + 1)}>+1</button>
+            */}
+            <div className="gif-container">
+                {images.map((img) => (
+                    <GifGridItem key={img.id} {...img} className="grid">
+                        {/* spread de las props de img (herencia) */}
+                    </GifGridItem>
+                ))}
+            </div>
         </>
-    )
+    );
 }
 
 GifGrid.propTypes = {
     hero: PropTypes.string.isRequired,
-}
+};
 
-export default GifGrid
+export default GifGrid;

@@ -2,5 +2,5 @@
 
 GET api.giphy.com/v1/gifs/search
     ?api_key=NFxoxsrYkc0d1jXPTyypk9DB5KUHltu1
-    &q=Rickand Morty
+    &q=Rickand+Morty
     &limit=10

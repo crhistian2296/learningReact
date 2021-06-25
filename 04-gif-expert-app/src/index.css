@@ -5,7 +5,7 @@
 
 body,
 #root {
-    padding: 60px;
+    padding: 5%;
     font-size: 1.1rem;
 }
 
@@ -17,5 +17,29 @@ input {
 }
 
 input:focus {
-    border: 2px solid rgb(22, 60, 63);
+    border: 2px solid rgb(58, 129, 129);
+}
+
+.card {
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    max-width: 25%;
+    align-items: center;
+    border: 1px solid rgb(58, 129, 129);
+    border-radius: 5px;
+    justify-content: center;
+}
+.card img {
+    width: 100%;
+}
+
+.card-img_title {
+    font-size: 1rem;
+}
+
+.gif-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }

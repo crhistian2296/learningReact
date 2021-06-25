@@ -4,7 +4,7 @@ import GifGrid from "./components/GifGrid";
 
 const GifExpertApp = () => {
     // const heroes = ["saitama", "goku", "tanjiro"];
-    const [heroes, setHeroes] = useState(["saitama"]);
+    const [heroes, setHeroes] = useState(["Saitama"]);
 
     // const handleAdd = () => {
     //     setHeroes((initialState) => [...initialState, "luffy"]);
@@ -19,11 +19,10 @@ const GifExpertApp = () => {
             {/* <button type="submit" onClick={handleAdd}>
                 add
             </button> */}
-            <ol>
-                {heroes.map((heroe) => (
-                    <GifGrid key={heroe} hero={heroe}></GifGrid>
-                ))}
-            </ol>
+
+            {heroes.map((heroe) => (
+                <GifGrid key={heroe} hero={heroe}></GifGrid>
+            ))}
         </>
     );
 };
