@@ -13,7 +13,7 @@ const GifExpertApp = () => {
 
     return (
         <>
-            <h2>GifExpertApp</h2>
+            <h2 className="animate__animated animate__bounce">GifExpertApp</h2>
             <AddHero setHeroes={setHeroes} />
             <hr></hr>
             {/* <button type="submit" onClick={handleAdd}>

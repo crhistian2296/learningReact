@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { useFetchGifs } from "../hooks/useFetchGifs";
 import GifGridItem from "./GifGridItem";
-import { getGifs } from "../helpers/getGifs";
 
 function GifGrid({ hero }) {
-    const [images, setImages] = useState([]);
+    // const [images, setImages] = useState([]);
 
     /*
     const [counter, setCounter] = useState(0)
 
     //useEffect([func], [dependencies])
     */
-    useEffect(() => {
-        getGifs(hero).then((imgs) => setImages(imgs));
-    }, [hero]);
+    // useEffect(() => {
+    //     getGifs(hero).then((imgs) => setImages(imgs));
+    // }, [hero]);
 
     //getGifs();
 
+    const { data } = useFetchGifs(hero);
+
     return (
         <>
-            <h3>{hero}</h3>
+            <h3 className="animate__animated animate__fadeIn">{hero}</h3>
+
             {/* usando map para imprimir titulos
             <ol>
                 {images.map(({ id, title }) => (
@@ -31,9 +34,11 @@ function GifGrid({ hero }) {
                 <button type="submit" onClick={() => setCounter(counter + 1)}>+1</button>
             */}
             <div className="gif-container">
-                {images.map((img) => (
+                {data.map((img) => (
                     <GifGridItem key={img.id} {...img} className="grid">
-                        {/* spread de las props de img (herencia) */}
+                        {
+                            // spread de las props de img (herencia)
+                        }
                     </GifGridItem>
                 ))}
             </div>
