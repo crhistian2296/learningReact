@@ -20,7 +20,7 @@ function GifGrid({ hero }) {
     const { data } = useFetchGifs(hero);
 
     return (
-        <>
+        <div className="gif-results">
             <h3 className="animate__animated animate__fadeIn">{hero}</h3>
 
             {/* usando map para imprimir titulos
@@ -42,7 +42,7 @@ function GifGrid({ hero }) {
                     </GifGridItem>
                 ))}
             </div>
-        </>
+        </div>
     );
 }
 

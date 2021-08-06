@@ -1,6 +1,6 @@
+import { shallow } from "enzyme";
 import React from "react";
 import PrimeraApp from "../PrimeraApp";
-import { shallow } from "enzyme";
 // import { render } from "@testing-library/react";
 
 describe("Pruebas en <PrimeraApp /> ", () => {
@@ -20,7 +20,7 @@ describe("Pruebas en <PrimeraApp /> ", () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    test("Debe mostrar el subtitulo enviado pro props", () => {
+    test("Debe mostrar el subtitulo enviado por props", () => {
         const subtitulo = "Hey, pagame lo que me debes";
 
         wrapper = shallow(<PrimeraApp saludo={saludo} subtitulo={subtitulo} />);

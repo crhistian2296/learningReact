@@ -44,3 +44,7 @@ input:focus {
     flex-flow: row wrap;
     justify-content: space-between;
 }
+
+.gif-results {
+    margin-bottom: 55px;
+}
