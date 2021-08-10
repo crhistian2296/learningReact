@@ -5,13 +5,13 @@ exports[`Pruebas en GifgridItem Debe mostrar el componente correctamenete 1`] = 
   className="card animate__animated animate__fadeIn"
 >
   <img
-    alt="title"
-    src="url"
+    alt="titulo generico"
+    src="url generico"
   />
   <figcaption
     className="card-img_title"
   >
-    title
+    titulo generico
   </figcaption>
 </figure>
 `;
