@@ -21,13 +21,14 @@ input:focus {
 }
 
 .card {
-    background-color: lightsteelblue;
+    color: azure;
+    background-color: black;
     display: flex;
     flex-flow: row wrap;
     flex-grow: 1;
     max-width: 25%;
     align-items: center;
-    border: 1px solid rgb(58, 129, 129);
+    border: 1px solid rgb(91, 109, 109);
     border-radius: 5px;
     justify-content: center;
 }

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
 import PropTypes from "prop-types";
+import React, { useState } from "react";
 
 export default function AddHero({ setHeroes }) {
     const [inputValue, setInputValue] = useState(""); //useState tiene valor undefined por defecto
 
     const handleOnChange = (e) => {
         setInputValue(e.target.value);
-        // console.log(e.target.value);
+        // console.log("El target fue alcanzado");
     };
 
     const handleSubmit = (e) => {
@@ -14,13 +14,17 @@ export default function AddHero({ setHeroes }) {
         if (inputValue.trim().length > 0) {
             setHeroes((initialState) => [inputValue, ...initialState]);
             setInputValue("");
-        } else console.error("input void, please enter a hero name before submit your request");
-
+        } else
+            alert(
+                "Busqueda vacia, por favor introduzca el nombre del heroe antes de hacer la peticion"
+            );
         // console.log("submit:", inputValue);
     };
 
     return (
         <form onSubmit={handleSubmit}>
+            //parrafo para hacer testing
+            <p> {inputValue} </p>
             <input
                 type="text"
                 value={inputValue}

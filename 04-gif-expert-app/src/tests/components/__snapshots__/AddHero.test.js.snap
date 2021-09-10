@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <AddHero/> Debe mostrar el componente correctamente 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  //parrafo para hacer testing
+  <p>
+     
+     
+  </p>
+  <input
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+</form>
+`;
