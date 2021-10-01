@@ -23,7 +23,7 @@ export default function AddHero({ setHeroes }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            //parrafo para hacer testing
+            {/* parrafo para hacer testing */}
             <p> {inputValue} </p>
             <input
                 type="text"

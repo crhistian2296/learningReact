@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas para GifGrid Debe mostrar el componente correctamente 1`] = `
+<div
+  className="gif-results"
+>
+  <h3
+    className="animate__animated animate__fadeIn"
+  >
+    Saitama
+  </h3>
+  <p
+    className="animate__animated animate__flash"
+  />
+  <div
+    className="gif-container"
+  />
+</div>
+`;

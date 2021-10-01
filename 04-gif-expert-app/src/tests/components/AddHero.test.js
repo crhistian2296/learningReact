@@ -31,7 +31,7 @@ describe("Pruebas en <AddHero/>", () => {
         expect(setHeroes).not.toBeCalled();
     });
 
-    //mock de la implementacion de un alert
+    //* Mock de la implementacion de un alert
     jest.spyOn(window, "alert").mockImplementation(() => {});
 
     test("Debe llamar un alert si se intenta un submit vacio", () => {
@@ -45,5 +45,13 @@ describe("Pruebas en <AddHero/>", () => {
         wrapper.find("form").simulate("submit", { preventDefault() {} });
         // expect(setHeroes).not.toHaveBeenCalled();
         expect(window.alert).not.toHaveBeenCalled();
+    });
+
+    test("Debe llamara a setHeroes y limpiar la caja de texto", () => {
+        wrapper.find("input").simulate("change", { target: { value: "hola" } });
+        wrapper.find("form").simulate("submit", { preventDefault() {} });
+        //fragmento que compureba si se llamo algun tipo de funcion
+        expect(setHeroes).toHaveBeenCalledWith(expect.any(Function));
+        expect(wrapper.find("input").prop("value").trim()).toBe("");
     });
 });

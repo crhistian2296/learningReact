@@ -4,7 +4,6 @@ exports[`Pruebas en <AddHero/> Debe mostrar el componente correctamente 1`] = `
 <form
   onSubmit={[Function]}
 >
-  //parrafo para hacer testing
   <p>
      
      

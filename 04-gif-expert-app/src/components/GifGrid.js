@@ -17,11 +17,12 @@ function GifGrid({ hero }) {
 
     //getGifs();
 
-    const { data } = useFetchGifs(hero);
+    const { data, loading } = useFetchGifs(hero);
 
     return (
         <div className="gif-results">
             <h3 className="animate__animated animate__fadeIn">{hero}</h3>
+            {loading && <p className="animate__animated animate__flash"></p>}
 
             {/* usando map para imprimir titulos
             <ol>

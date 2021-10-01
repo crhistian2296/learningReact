@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import AddHero from "./components/AddHero";
 import GifGrid from "./components/GifGrid";
 
-const GifExpertApp = () => {
+const GifExpertApp = ({ defaultHero = ["Saitama"] }) => {
     // const heroes = ["saitama", "goku", "tanjiro"];
-    const [heroes, setHeroes] = useState(["Saitama"]);
+    const [heroes, setHeroes] = useState(defaultHero);
 
     // const handleAdd = () => {
     //     setHeroes((initialState) => [...initialState, "luffy"]);

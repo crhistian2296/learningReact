@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente <GifExpertApp/> Debe de mostrar una lista de heroes en busqueda 1`] = `
+<Fragment>
+  <h2
+    className="animate__animated animate__bounce"
+  >
+    GifExpertApp
+  </h2>
+  <AddHero
+    setHeroes={[Function]}
+  />
+  <hr />
+  <GifGrid
+    hero="Papunika"
+    key="Papunika"
+  />
+  <GifGrid
+    hero="Hunterxhunter"
+    key="Hunterxhunter"
+  />
+  <GifGrid
+    hero="Deadpool"
+    key="Deadpool"
+  />
+</Fragment>
+`;
+
+exports[`Pruebas en el componente <GifExpertApp/> Debe renderizar el componente GifExpertApp correctamente 1`] = `
+<Fragment>
+  <h2
+    className="animate__animated animate__bounce"
+  >
+    GifExpertApp
+  </h2>
+  <AddHero
+    setHeroes={[Function]}
+  />
+  <hr />
+  <GifGrid
+    hero="Saitama"
+    key="Saitama"
+  />
+</Fragment>
+`;
