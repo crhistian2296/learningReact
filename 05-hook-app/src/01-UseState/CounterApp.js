@@ -1,32 +1,24 @@
-import React, { useState } from "react";
-import "./Counter.css";
-const CounterApp = () => {
-  const [data, setData] = useState({
-    counter1: 10,
-    counter2: 20,
-    counter3: 30,
-    counter4: 40,
-  });
+import React from "react";
+// import "./Counter.css";
+import useCounter from "./hooks/useCounter";
 
-  const { counter1, counter2 } = data;
+const CounterApp = () => {
+  const { state, increment, decrement, reset } = useCounter(400);
 
   return (
-    <>
-      <h2>Counter 1 = {counter1}</h2>
-      <h2>Counter 2 = {counter2}</h2>
+    <div className="m-5">
+      <h2>Counter with hook = {state}</h2>
       <hr />
-      <button
-        className="btn btn-primary"
-        onClick={() =>
-          setData({
-            ...data,
-            counter1: counter1 + 1,
-          })
-        }
-      >
+      <button className="btn btn-primary m-1" onClick={() => increment()}>
         +1
       </button>
-    </>
+      <button className="btn btn-primary m-1" onClick={() => decrement(2)}>
+        -2
+      </button>
+      <button className="btn btn-info text-light m-1" onClick={() => reset()}>
+        reset
+      </button>
+    </div>
   );
 };
 
