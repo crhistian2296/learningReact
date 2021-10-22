@@ -1,10 +1,12 @@
 // import CounterApp from "./01-UseState/CounterApp";
-import FormWithHooks from "./02-UseEffect/FormWithHooks";
+// import SimpleForm from "./02-UseEffect/SimpleForm";
+// import FormWithHooks from "./02-UseEffect/FormWithHooks";
+import MultiplesCustomHooks from "./03-Examples/MultiplesCustomHooks";
 
 function HookApp() {
   return (
     <div>
-      <FormWithHooks />
+      <MultiplesCustomHooks />
     </div>
   );
 }
