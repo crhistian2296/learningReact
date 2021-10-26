@@ -7,9 +7,9 @@ const MultiplesCustomHooks = () => {
   const { data, loading } = useFetch(`https://www.breakingbadapi.com/api/quotes/${counter}`);
   const { quote, author } = !loading && data[0];
 
-  console.log("data:", data, "loading:", loading);
-  console.log("Quote:", quote);
-  console.log("Author:", author);
+  // console.log("data:", data, "loading:", loading);
+  // console.log("Quote:", quote);
+  // console.log("Author:", author);
   return (
     <div className="m-5">
       <h1>Custom Hooks!!!</h1>
