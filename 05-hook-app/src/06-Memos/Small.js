@@ -1,14 +1,19 @@
-import React, { memo } from "react";
+import PropTypes from 'prop-types';
+import React, { memo } from 'react';
 
 //Memos es conveninete de aplicar solamente si se quiere ahorrar en numero de peticiones
 //O la aplicacion renderiza una gran cantidad de componenetes
 const Small = memo(({ counter: value }) => {
-  console.log("Small +1 render");
+  console.log('Small +1 render');
   return (
-    <div className="ml-3">
+    <div className='ml-3'>
       <small>{value}</small>
     </div>
   );
 });
+
+Small.proptypes = {
+  counter: PropTypes.number.isRequired,
+};
 
 export default Small;
