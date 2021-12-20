@@ -10,13 +10,13 @@ import React from 'react';
 // import Memohook from "./06-Memos/Memohook";
 // import CallbackHook from "./06-Memos/CallbackHook";
 // import { Padre } from "./07-tarea-memo/Padre";
-import TodoApp from './08-UseReducer/TodoApp';
-// import { MainApp } from './09-UseContext/MainApp';
+// import TodoApp from './08-UseReducer/TodoApp';
+import { MainApp } from './09-UseContext/MainApp';
 
 function HookApp() {
   return (
     <div>
-      <TodoApp />
+      <MainApp />
     </div>
   );
 }
