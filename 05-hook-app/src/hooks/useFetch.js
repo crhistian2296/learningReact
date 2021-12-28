@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 function useFetch(url) {
   const [state, setState] = useState({ loading: true, error: null, data: null });
@@ -17,6 +17,13 @@ function useFetch(url) {
       .then((data) => {
         if (isMounted.current) setState(() => ({ loading: false, error: null, data }));
         // } else console.warn("El componente ya fue desmontado");
+      })
+      .catch(() => {
+        setState(() => ({
+          loading: false,
+          error: 'No se pudo acceder a la informacion deseada',
+          data: null,
+        }));
       });
   }, [url]);
 
