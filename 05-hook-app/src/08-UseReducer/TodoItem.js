@@ -7,7 +7,7 @@ const TodoItem = ({ todo, index, handleDelete, handleToggle }) => {
       className='list-group-item d-flex align-content-center justify-content-between'
     >
       <button
-        className={`btn ${todo.done === true && 'complete'}`}
+        className={`btn toggle text ${todo.done === true && 'complete'}`}
         onClick={() => handleToggle(todo.id)}
       >
         {index + 1}. {todo.description}

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas sobre <RealExampleUseReff/> Deberia de mostrar el componente correctamente 1`] = `
+<div
+  className="m-5"
+>
+  <h1>
+    Cotidian use of useReff
+  </h1>
+  <hr />
+  <button
+    className="btn btn-primary ml-5"
+    onClick={[Function]}
+  >
+    show/hide
+  </button>
+</div>
+`;

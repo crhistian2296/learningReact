@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <todoListitem/> Debe de mostrarse correctamente 1`] = `
+<div
+  className="list-group-item d-flex align-content-center justify-content-between"
+  key="1"
+>
+  <button
+    className="btn toggle text false"
+    onClick={[Function]}
+  >
+    1
+    . 
+    Aprender Typescript
+  </button>
+  <button
+    className="btn btn-danger"
+    onClick={[Function]}
+  >
+    Eliminar
+  </button>
+</div>
+`;
