@@ -19,7 +19,7 @@ const LoginScreen = () => {
           name='password'
           className='box-container__input'
         />
-        <button type='submit' className='btn btn-primary btn-block'>
+        <button type='submit' className='btn btn-primary btn-block mt-1'>
           Login
         </button>
         <div className='box-container__social-networks'>
@@ -38,7 +38,9 @@ const LoginScreen = () => {
             </p>
           </div>
         </div>
-        <Link to='/auth/register'>Create new account</Link>
+        <Link to='/auth/register' className='link'>
+          Create new account
+        </Link>
       </form>
     </>
   );
