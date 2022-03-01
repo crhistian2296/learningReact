@@ -19,11 +19,12 @@
   &-primary
     background-color: $primary
     border-radius: 2px
+    transition: background-color 300ms ease
 
     &:disabled
       background-color: lighten($primary, 20)
     &:hover
-      background-color: darken($primary, 20)
+      background-color: darken($primary, 5)
 
 // Boton de google
 .google-btn
@@ -33,7 +34,7 @@
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25)
   border-radius: 5px
   transition: box-shadow .3s ease
-  height: 46px
+  height: 36px
   display: flex
   align-items: center
   justify-content: space-around
@@ -47,8 +48,8 @@
   .google-icon-wrapper
     background-color: $google-white
     border-radius: 50px
-    height: 34px
-    width: 34px
+    height: 29px
+    width: 29px
     display: flex
     align-items: center
     justify-content: center
