@@ -15,7 +15,7 @@ const LoginScreen = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(startLoginEmailPassword(1234, 'cristof'));
+    dispatch(startLoginEmailPassword(123456, 'cristof'));
   };
 
   const handleGoogleLogin = () => {
