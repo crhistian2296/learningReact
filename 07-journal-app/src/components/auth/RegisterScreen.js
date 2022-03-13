@@ -1,11 +1,14 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import validator from 'validator';
+import { startRegisterWithEmailAsync } from '../../actions/auth';
 import { removeError, setError } from '../../actions/ui';
 import useForm from '../../hooks/useFrom';
 
 const RegisterScreen = () => {
   const dispatch = useDispatch();
+  const { msgError, loading } = useSelector((state) => state.ui);
+  // console.log(ui);
 
   const { formValues, handleInputChange } = useForm({
     name: 'Lucas',
@@ -19,26 +22,22 @@ const RegisterScreen = () => {
   const isFormValid = () => {
     if (name.trim().length === 0) {
       dispatch(setError('Name is require'));
-      console.log('dispatch name hecho');
       return false;
     } else if (!validator.isEmail(email)) {
       dispatch(setError('Email is not valid'));
-      console.log('dispatch email hecho');
       return false;
-    } else if (password.trim() !== password2.trim() || password.length < 5) {
+    } else if (password.trim() !== password2.trim() || password.trim().length < 6) {
       dispatch(setError('The password must be over 6 characters and match itself'));
-      console.log('dispatch password hecho');
       return false;
     }
     dispatch(removeError());
-    console.log('dispatch remove hecho');
     return true;
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
     // console.log(formValues);
-    if (isFormValid()) console.log('Formulario aceptado');
+    if (isFormValid()) dispatch(startRegisterWithEmailAsync(email, password, name));
   };
 
   return (
@@ -46,7 +45,7 @@ const RegisterScreen = () => {
       <h3 className='box-container__title'>Register</h3>
 
       <form onSubmit={handleRegister}>
-        <div className='box-container__alert-error'>Hola mundo</div>
+        {msgError !== null && <div className='box-container__alert-error'>{msgError}</div>}
         <input
           type='text'
           placeholder='Name'
@@ -81,7 +80,7 @@ const RegisterScreen = () => {
           onChange={handleInputChange}
           className='box-container__input'
         />
-        <button type='submit' className='btn btn-primary btn-block mt-1'>
+        <button type='submit' className='btn btn-primary btn-block mt-1' disabled={loading}>
           Register
         </button>
 

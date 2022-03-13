@@ -1,25 +1,42 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth';
+import validator from 'validator';
+import { startGoogleLogin, startLoginWithEmailAsync } from '../../actions/auth';
+import { removeError, setError } from '../../actions/ui';
 import useForm from '../../hooks/useFrom';
 
 const LoginScreen = () => {
+  const dispatch = useDispatch();
+  const { msgError, loading } = useSelector((state) => state.ui);
   const { formValues, handleInputChange } = useForm({
-    email: 'cristof@gmail.com',
-    password: '1234',
+    email: 'lucas22@gmail.com',
+    password: '123456',
   });
 
   const { email, password } = formValues;
 
-  const dispatch = useDispatch();
-
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(startLoginEmailPassword(123456, 'cristof'));
+    if (isFormValid()) {
+      dispatch(startLoginWithEmailAsync(email, password));
+    }
   };
 
   const handleGoogleLogin = () => {
     dispatch(startGoogleLogin());
+  };
+
+  const isFormValid = () => {
+    if (!validator.isEmail(email)) {
+      dispatch(setError('Email is not valid'));
+      return false;
+    } else if (password.trim().length < 6) {
+      console.log(password.trim().length);
+      dispatch(setError('The password must be over 6 characters'));
+      return false;
+    }
+    dispatch(removeError());
+    return true;
   };
 
   return (
@@ -27,6 +44,8 @@ const LoginScreen = () => {
       <h3 className='box-container__title'>Login</h3>
 
       <form onSubmit={handleLogin}>
+        {msgError !== null && <div className='box-container__alert-error'>{msgError}</div>}
+
         <input
           type='text'
           placeholder='Email'
@@ -44,7 +63,7 @@ const LoginScreen = () => {
           value={password}
           onChange={handleInputChange}
         />
-        <button type='submit' className='btn btn-primary btn-block mt-1'>
+        <button type='submit' className='btn btn-primary btn-block mt-1' disabled={loading}>
           Login
         </button>
         <div className='box-container__social-networks'>
