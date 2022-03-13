@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { login } from '../actions/auth';
 import JournalScreen from '../components/journal/JournalScreen';
 import { firebase } from '../firebase/firebase-config';
 import AuthRouter from './AuthRouter';
+import { PrivateRoutes } from './PrivateRoutes';
+import { PublicRoutes } from './PublicRoutes';
 
 const AppRouter = () => {
   const [checking, setChecking] = useState(true);
@@ -27,9 +29,8 @@ const AppRouter = () => {
     <Router>
       <div>
         <Switch>
-          <Route path='/auth' component={AuthRouter} />
-          <Route exact path='/' component={JournalScreen} />
-          <Redirect to='/auth/login' />
+          <PublicRoutes path='/auth' component={AuthRouter} isAuthenticated={loggedIn} />
+          <PrivateRoutes exact path='/' component={JournalScreen} isAuthenticated={loggedIn} />
         </Switch>
       </div>
     </Router>
