@@ -33,7 +33,7 @@ const LoginScreen = () => {
       dispatch(setError('Email is not valid'));
       return false;
     } else if (password.trim().length < 6) {
-      console.log(password.trim().length);
+      // console.log(password.trim().length);
       dispatch(setError('The password must be over 6 characters'));
       return false;
     }
