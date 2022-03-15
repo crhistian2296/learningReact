@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import validator from 'validator';
 import { startGoogleLogin, startLoginWithEmailAsync } from '../../actions/auth';
 import { removeError, setError } from '../../actions/ui';
@@ -39,13 +41,17 @@ const LoginScreen = () => {
     return true;
   };
 
+  useEffect(() => {
+    if (msgError) return Swal.fire('Error', msgError, 'error');
+  }, [msgError]);
+
+  const handleClick = () => dispatch(removeError());
+
   return (
     <>
       <h3 className='box-container__title'>Login</h3>
 
       <form onSubmit={handleLogin}>
-        {msgError !== null && <div className='box-container__alert-error'>{msgError}</div>}
-
         <input
           type='text'
           placeholder='Email'
@@ -82,7 +88,7 @@ const LoginScreen = () => {
             </p>
           </div>
         </div>
-        <Link to='/auth/register' className='link'>
+        <Link to='/auth/register' className='link' onClick={handleClick}>
           Create new account
         </Link>
       </form>

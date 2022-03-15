@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
 import { types } from '../types/types';
 import { uiFinishLoading, uiStartLoading } from './ui';
@@ -36,7 +37,7 @@ export const startRegisterWithEmailAsync = (email, password, name) => {
         console.log(user);
         dispatch(login(user.uid, user.displayName));
       })
-      .catch((err) => console.log(err))
+      .catch((err) => Swal.fire('Error', err.message, 'error'))
       .finally(() => dispatch(uiFinishLoading()));
   };
 };
@@ -50,7 +51,7 @@ export const startLoginWithEmailAsync = (email, password) => {
         console.log(user);
         dispatch(login(user.uid, user.displayName));
       })
-      .catch((err) => console.log(err))
+      .catch((err) => Swal.fire('Error', err.message, 'error'))
       .finally(() => dispatch(uiFinishLoading()));
   };
 };
