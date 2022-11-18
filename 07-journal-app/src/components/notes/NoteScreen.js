@@ -7,7 +7,12 @@ const NoteScreen = () => {
       <NotesAppBar />
 
       <div className='notes__content'>
-        <input type='text' className='notes__title--input' placeholder='Entry name' />
+        <input
+          type='text'
+          autoFocus={true}
+          className='notes__title--input'
+          placeholder='Entry name'
+        />
         <textarea
           name='textarea'
           className='notes__textarea'
