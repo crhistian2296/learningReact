@@ -1,9 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
+import AuthRoutes from '../auth/routes/AuthRoutes';
+import JournalRoutes from '../journal/routes/JournalRoutes';
 
 const JournalRouter = () => {
   return (
     <Routes>
-      <Route path='' element={''} />
+      <Route path='auth/*' element={<AuthRoutes />} />
+      <Route path='' element={<JournalRoutes />} />
+      {/* <Route path='*' element={<Navigate to='/' />} /> */}
     </Routes>
   );
 };
