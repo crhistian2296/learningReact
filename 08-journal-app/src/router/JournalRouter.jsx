@@ -6,7 +6,7 @@ const JournalRouter = () => {
   return (
     <Routes>
       <Route path='auth/*' element={<AuthRoutes />} />
-      <Route path='' element={<JournalRoutes />} />
+      <Route path='*' element={<JournalRoutes />} />
       {/* <Route path='*' element={<Navigate to='/' />} /> */}
     </Routes>
   );
