@@ -1,14 +1,14 @@
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import JournalRouter from './router/JournalRouter';
 import { AppTheme } from './theme';
 
 const JournalApp = () => {
   return (
-    <HashRouter>
+    <Router>
       <AppTheme>
         <JournalRouter />
       </AppTheme>
-    </HashRouter>
+    </Router>
   );
 };
 

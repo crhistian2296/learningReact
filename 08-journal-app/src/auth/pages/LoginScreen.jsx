@@ -14,30 +14,28 @@ const Login = () => {
         minHeight: '100vh',
         minWidth: '100vw',
         backgroundColor: 'primary.main',
-        p: 4,
+        padding: 4,
       }}
     >
       <Grid
         container
         className='box-shadow'
-        xs={3}
         sx={{
           backgroundColor: 'white',
           p: 3,
           borderRadius: 2,
-          minWidth: '250px',
+          maxWidth: '420px',
         }}
-        fullWidth
       >
         <Typography variant='h5' mb={1}>
           Login
         </Typography>
         <form>
           <Grid container>
-            <Grid item xs={12} mt={2} fullWidth>
+            <Grid item xs={12} mt={2}>
               <TextField label='mail' type='email' fullWidth />
             </Grid>
-            <Grid item xs={12} mt={2} fullWidth>
+            <Grid item xs={12} mt={2}>
               <TextField label='password' type='password' fullWidth />
             </Grid>
           </Grid>
@@ -48,10 +46,10 @@ const Login = () => {
               </Button>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Button container variant='contained' fullWidth>
-                <Google sx={{ marginLeft: 2 }} />
+              <Button variant='contained' fullWidth>
+                <Google/>
                 <Typography
-                  sx={{ marginLeft: 1, marginRight: 2 }}
+                  marginLeft={1}
                   variant='body2'
                 >
                   Google
