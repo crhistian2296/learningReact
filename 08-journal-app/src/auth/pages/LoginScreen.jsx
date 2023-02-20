@@ -30,7 +30,12 @@ const Login = () => {
             </Button>
           </Grid>
           <Grid container direction='row' justifyContent='end'>
-            <Link component={RoutLink} color='inherit' mt={1} to='/auth/register'>
+            <Link
+              component={RoutLink}
+              color='inherit'
+              mt={1}
+              to='/auth/register'
+            >
               Create account
             </Link>
           </Grid>

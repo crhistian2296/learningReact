@@ -1,16 +1,23 @@
 import { Box } from '@mui/material';
 import PropTypes from 'prop-types';
+import NavBar from '../components/NavBar';
 
-const JournalLayout = ({children}) => {
+const drawerWidth = 240;
+
+const JournalLayout = ({ children }) => {
   return (
     <Box display='flex'>
-      {/* Navbar */}
+      <NavBar drawerWidth={drawerWidth} />
 
       {/* Sidebar */}
 
-      <Box component='main' flexGrow={1} p={3} justifyContent='space-between' >
-      </Box>
-        {children}
+      <Box
+        component='main'
+        flexGrow={1}
+        p={3}
+        justifyContent='space-between'
+      ></Box>
+      {children}
     </Box>
   );
 };
