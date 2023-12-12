@@ -7,7 +7,7 @@ const NavBar = ({ drawerWidth }) => {
     <AppBar
       position='fixed'
       sx={{
-        width: { sm: `calc:(100% - ${drawerWidth}px)` },
+        width: { sm: `calc(100% - ${drawerWidth}px)` },
         ml: { sm: `${drawerWidth}px` },
       }}
     >
@@ -26,7 +26,9 @@ const NavBar = ({ drawerWidth }) => {
           justifyContent='space-between'
           alignItems='center'
         >
-          <Typography variant='h6' noWrap component='div'>JournalApp</Typography>
+          <Typography variant='h6' noWrap component='div'>
+            JournalApp
+          </Typography>
           <IconButton color='error'>
             <LogoutOutlined />
           </IconButton>

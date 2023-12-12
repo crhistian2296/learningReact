@@ -1,5 +1,5 @@
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
-import { Link as RoutLink } from 'react-router-dom';
+import { Link as RouteLink } from 'react-router-dom';
 import AuthLayout from '../layout/AuthLayout';
 
 const Register = () => {
@@ -23,9 +23,9 @@ const Register = () => {
               Create account
             </Button>
           </Grid>
-          <Grid container direction='row' justifyContent='end'>
+          <Grid container direction='row' justifyContent='end' pt={1}>
             <Typography mr={1}>Already have an account?</Typography>
-            <Link component={RoutLink} color='inherit' to='/auth/login'>
+            <Link component={RouteLink} color='inherit' to='/auth/login'>
               Log in
             </Link>
           </Grid>

@@ -1,6 +1,6 @@
 import { Google } from '@mui/icons-material';
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
-import { Link as RoutLink } from 'react-router-dom';
+import { Link as RouteLink } from 'react-router-dom';
 import AuthLayout from '../layout/AuthLayout';
 
 const Login = () => {
@@ -31,7 +31,7 @@ const Login = () => {
           </Grid>
           <Grid container direction='row' justifyContent='end'>
             <Link
-              component={RoutLink}
+              component={RouteLink}
               color='inherit'
               mt={1}
               to='/auth/register'
