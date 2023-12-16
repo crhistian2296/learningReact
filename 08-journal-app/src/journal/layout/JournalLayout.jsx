@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Toolbar } from '@mui/material';
 import PropTypes from 'prop-types';
 import NavBar from '../components/NavBar';
 import SideBar from '../components/Sidebar';
@@ -12,13 +12,11 @@ const JournalLayout = ({ children }) => {
 
       <SideBar drawerWidth={drawerWidth} />
 
-      <Box
-        component='main'
-        flexGrow={1}
-        p={3}
-        justifyContent='space-between'
-      ></Box>
-      {children}
+      <Box component='main' flexGrow={1} p={3} justifyContent={'space-between'}>
+        <Toolbar />
+
+        {children}
+      </Box>
     </Box>
   );
 };
