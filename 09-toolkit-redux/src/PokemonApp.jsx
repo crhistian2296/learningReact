@@ -1,15 +1,16 @@
-import { useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons } from './store/slices/pokemon';
+import { /* useCallback, useEffect, */ useState } from 'react';
+// import { useDispatch } from 'react-redux';
+import { useGetPokemonQuery } from './api/pokeApi';
 
 const PokemonApp = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const dispatch = useCallback(useDispatch(), []);
-  const { pokemons, isLoading, page } = useSelector((state) => state.pokemons);
-
-  useEffect(() => {
-    dispatch(getPokemons());
-  }, [dispatch]);
+  // const dispatch = useCallback(useDispatch(), []);
+  // const { pokemons, page } = useSelector((state) => state.pokemons);
+  const [page, setPage] = useState(0);
+  const { data, isLoading } = useGetPokemonQuery(page);
+  // useEffect(() => {
+  //   dispatch(getPokemons());
+  // }, [dispatch]);
 
   return (
     <>
@@ -19,8 +20,8 @@ const PokemonApp = () => {
       <p>Loading: {String(isLoading)} </p>
       <h3>Page: {page}</h3>
       <ul style={{ listStyle: 'none' }}>
-        {pokemons &&
-          pokemons.map((pokemon, index) => {
+        {data &&
+          data.results.map((pokemon, index) => {
             let id = pokemon.url.split('/').at(-2);
             return (
               <li key={index}>
@@ -31,16 +32,16 @@ const PokemonApp = () => {
       </ul>
 
       <button
-        disabled={page === 1 && true}
+        disabled={page === 0 && true}
         onClick={() => {
-          dispatch(getPokemons(page - 2));
+          setPage((state) => state - 1);
         }}
       >
         PREV
       </button>
       <button
         onClick={() => {
-          dispatch(getPokemons(page));
+          setPage((state) => state + 1);
         }}
       >
         NEXT
