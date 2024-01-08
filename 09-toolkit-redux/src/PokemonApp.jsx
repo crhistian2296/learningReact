@@ -7,7 +7,7 @@ const PokemonApp = () => {
   // const dispatch = useCallback(useDispatch(), []);
   // const { pokemons, page } = useSelector((state) => state.pokemons);
   const [page, setPage] = useState(0);
-  const { data, isLoading } = useGetPokemonQuery(page);
+  const { data: pokemons, isLoading } = useGetPokemonQuery(page);
   // useEffect(() => {
   //   dispatch(getPokemons());
   // }, [dispatch]);
@@ -20,8 +20,8 @@ const PokemonApp = () => {
       <p>Loading: {String(isLoading)} </p>
       <h3>Page: {page}</h3>
       <ul style={{ listStyle: 'none' }}>
-        {data &&
-          data.results.map((pokemon, index) => {
+        {pokemons &&
+          pokemons.results.map((pokemon, index) => {
             let id = pokemon.url.split('/').at(-2);
             return (
               <li key={index}>
