@@ -23,7 +23,7 @@ const Register = () => {
               Create account
             </Button>
           </Grid>
-          <Grid container direction='row' justifyContent='end' pt={1}>
+          <Grid container direction='row' justifyContent='end' pt={4}>
             <Typography mr={1}>Already have an account?</Typography>
             <Link component={RouteLink} color='inherit' to='/auth/login'>
               Log in
