@@ -11,10 +11,20 @@ const Register = () => {
             <TextField label='name' type='name' fullWidth />
           </Grid>
           <Grid item xs={12} mt={2}>
-            <TextField label='email' type='email' fullWidth />
+            <TextField
+              label='email'
+              type='email'
+              fullWidth
+              autoComplete='email'
+            />
           </Grid>
           <Grid item xs={12} mt={2}>
-            <TextField label='password' type='password' fullWidth />
+            <TextField
+              label='password'
+              type='password'
+              fullWidth
+              autoComplete='current-password'
+            />
           </Grid>
         </Grid>
         <Grid container spacing={2} mt={1}>
