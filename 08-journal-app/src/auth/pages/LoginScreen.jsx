@@ -1,6 +1,7 @@
 import { Google } from '@mui/icons-material';
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouteLink } from 'react-router-dom';
 import { useForm } from '../../hooks';
 import { checkingAuthentication, startGoogleSignIn } from '../../store/auth';
@@ -12,19 +13,22 @@ const Login = () => {
     password: 1234,
   });
 
+  const { status } = useSelector(state => state.auth);
   const dispatch = useDispatch();
+
+  const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
   const onSubmit = event => {
     event.preventDefault();
     if (!email || !password) return console.warn('Incomplete credentials');
 
-    dispatch(checkingAuthentication());
-    console.log('Credentials', { email, password });
+    console.debug('Credentials', { email, password });
+    return dispatch(checkingAuthentication());
   };
 
   const onGoogleSignIn = async () => {
-    console.log('Google sign in');
-    dispatch(startGoogleSignIn());
+    console.debug('Google sign in');
+    return dispatch(startGoogleSignIn());
   };
 
   return (
@@ -56,12 +60,22 @@ const Login = () => {
         </Grid>
         <Grid container spacing={2} mt={1}>
           <Grid item xs={12} sm={6}>
-            <Button type='submit' variant='contained' fullWidth>
+            <Button
+              type='submit'
+              disabled={isAuthenticating}
+              variant='contained'
+              fullWidth
+            >
               Login
             </Button>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Button onClick={onGoogleSignIn} variant='contained' fullWidth>
+            <Button
+              disabled={isAuthenticating}
+              onClick={onGoogleSignIn}
+              variant='contained'
+              fullWidth
+            >
               <Google />
               <Typography marginLeft={1} variant='body2'>
                 Google
