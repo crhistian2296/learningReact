@@ -10,7 +10,7 @@ import AuthLayout from '../layout/AuthLayout';
 const Login = () => {
   const { email, password, onInputChange } = useForm({
     email: 'user@mail.com',
-    password: 1234,
+    password: '123456',
   });
 
   const { status } = useSelector(state => state.auth);

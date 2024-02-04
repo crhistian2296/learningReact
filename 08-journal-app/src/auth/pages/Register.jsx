@@ -1,12 +1,15 @@
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
+import { useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouteLink } from 'react-router-dom';
 import { useForm } from '../../hooks';
+import { startCreatingUserWithEmailAndPassword } from '../../store/auth/thunks';
 import AuthLayout from '../layout/AuthLayout';
 
 const formData = {
   displayName: 'crhistian',
-  email: 'user@mail.com',
-  password: 1234,
+  email: 'user@gmail.com',
+  password: '123456',
 };
 
 const formValidations = {
@@ -28,17 +31,27 @@ const Register = () => {
     displayNameValid,
     emailValid,
     passwordValid,
+    isFormValid,
   } = useForm(formData, formValidations);
 
-  console.log(displayNameValid, emailValid, passwordValid);
+  const dispatch = useDispatch();
+  const [formSubmited, setFormSubmited] = useState(false);
+
+  const { status } = useSelector(state => state.auth);
+  const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
   const onSubmit = e => {
     e.preventDefault();
+    setFormSubmited(true);
+    if (!isFormValid) return;
+    console.log(formState);
+    dispatch(startCreatingUserWithEmailAndPassword(formState));
   };
 
   return (
     <AuthLayout title='Register'>
       <form onSubmit={e => onSubmit(e)}>
+        <h1>Is form valid?: {String(isFormValid)} </h1>
         <Grid container>
           <Grid item xs={12} mt={2}>
             <TextField
@@ -49,6 +62,8 @@ const Register = () => {
               autoComplete='displayName'
               value={displayName}
               onChange={onInputChange}
+              error={!!displayNameValid && formSubmited}
+              helperText={displayNameValid}
             />
           </Grid>
           <Grid item xs={12} mt={2}>
@@ -60,6 +75,8 @@ const Register = () => {
               autoComplete='email'
               value={email}
               onChange={onInputChange}
+              error={!!emailValid && formSubmited}
+              helperText={emailValid}
             />
           </Grid>
           <Grid item xs={12} mt={2}>
@@ -71,12 +88,19 @@ const Register = () => {
               autoComplete='current-password'
               value={password}
               onChange={onInputChange}
+              error={!!passwordValid && formSubmited}
+              helperText={passwordValid}
             />
           </Grid>
         </Grid>
         <Grid container spacing={2} mt={1}>
           <Grid item xs={12} sm={6}>
-            <Button variant='contained' fullWidth type='submit'>
+            <Button
+              variant='contained'
+              fullWidth
+              type='submit'
+              disabled={isAuthenticating}
+            >
               Create account
             </Button>
           </Grid>

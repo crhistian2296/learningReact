@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export const useForm = (initialForm = {}, formValidations = {}) => {
   const [formState, setFormState] = useState(initialForm);
@@ -16,10 +16,6 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     setFormState(initialForm);
   };
 
-  useEffect(() => {
-    createValidators();
-  }, [formState]);
-
   const createValidators = () => {
     const formCheckedValues = {};
 
@@ -34,7 +30,17 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     setFormValidation(formCheckedValues);
   };
 
-  console.log(formState.displayName);
+  const isFormValid = useMemo(() => {
+    for (const fieldValid of Object.keys(formValidation)) {
+      if (formValidation[fieldValid] !== null) return false;
+    }
+
+    return true;
+  }, [formValidation]);
+
+  useEffect(() => {
+    createValidators();
+  }, [formState]);
 
   return {
     ...formState,
@@ -42,5 +48,6 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     onInputChange,
     onResetForm,
     ...formValidation,
+    isFormValid,
   };
 };
