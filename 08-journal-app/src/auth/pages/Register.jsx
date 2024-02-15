@@ -1,4 +1,11 @@
-import { Button, Grid, Link, TextField, Typography } from '@mui/material';
+import {
+  Alert,
+  Button,
+  Grid,
+  Link,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouteLink } from 'react-router-dom';
@@ -37,7 +44,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const [formSubmited, setFormSubmited] = useState(false);
 
-  const { status } = useSelector(state => state.auth);
+  const { status, errorMessage = null } = useSelector(state => state.auth);
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
   const onSubmit = e => {
@@ -94,6 +101,14 @@ const Register = () => {
           </Grid>
         </Grid>
         <Grid container spacing={2} mt={1}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            display={errorMessage !== null ? '' : 'none'}
+          >
+            <Alert severity='error'>{errorMessage}</Alert>
+          </Grid>
           <Grid item xs={12} sm={6}>
             <Button
               variant='contained'
