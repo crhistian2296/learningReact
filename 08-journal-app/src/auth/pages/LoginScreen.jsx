@@ -1,19 +1,29 @@
 import { Google } from '@mui/icons-material';
-import { Button, Grid, Link, TextField, Typography } from '@mui/material';
+import {
+  Alert,
+  Button,
+  Grid,
+  Link,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouteLink } from 'react-router-dom';
 import { useForm } from '../../hooks';
-import { checkingAuthentication, startGoogleSignIn } from '../../store/auth';
+import {
+  startGoogleSignIn,
+  startLoginWithEmailAndPassword,
+} from '../../store/auth';
 import AuthLayout from '../layout/AuthLayout';
 
 const Login = () => {
   const { email, password, onInputChange } = useForm({
-    email: 'user@mail.com',
+    email: 'user@gmail.com',
     password: '123456',
   });
 
-  const { status } = useSelector(state => state.auth);
+  const { status, errorMessage = null } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
@@ -23,7 +33,7 @@ const Login = () => {
     if (!email || !password) return console.warn('Incomplete credentials');
 
     console.debug('Credentials', { email, password });
-    return dispatch(checkingAuthentication());
+    return dispatch(startLoginWithEmailAndPassword({ email, password }));
   };
 
   const onGoogleSignIn = async () => {
@@ -59,6 +69,14 @@ const Login = () => {
           </Grid>
         </Grid>
         <Grid container spacing={2} mt={1}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            display={errorMessage !== null ? '' : 'none'}
+          >
+            <Alert severity='error'>{errorMessage}</Alert>
+          </Grid>
           <Grid item xs={12} sm={6}>
             <Button
               type='submit'
