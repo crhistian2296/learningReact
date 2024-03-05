@@ -7,7 +7,10 @@ const drawerWidth = 240;
 
 const JournalLayout = ({ children }) => {
   return (
-    <Box display='flex'>
+    <Box
+      display='flex'
+      className='animate__animated animate__fadeIn animate__faster'
+    >
       <NavBar drawerWidth={drawerWidth} />
 
       <SideBar drawerWidth={drawerWidth} />
@@ -24,5 +27,5 @@ const JournalLayout = ({ children }) => {
 export default JournalLayout;
 
 JournalLayout.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.array,
 };

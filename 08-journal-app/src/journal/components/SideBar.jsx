@@ -13,8 +13,14 @@ import {
   Typography,
 } from '@mui/material';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 const SideBar = ({ drawerWidth = 240 }) => {
+  const { displayName = '' } = useSelector(state => state.auth);
+
+  const capitalizedName =
+    displayName.at(0).toUpperCase() + displayName.slice(1).trim();
+
   return (
     <Box
       component='nav'
@@ -30,7 +36,7 @@ const SideBar = ({ drawerWidth = 240 }) => {
       >
         <Toolbar>
           <Typography variant='h6' noWrap component='div'>
-            Crhistian Garcia
+            {capitalizedName}
           </Typography>
         </Toolbar>
         <Divider />
