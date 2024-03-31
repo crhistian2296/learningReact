@@ -49,6 +49,4 @@ const NoteView = () => {
   );
 };
 
-NoteView.PropTypes = {};
-
 export default NoteView;
