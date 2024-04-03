@@ -10,7 +10,7 @@ export const loadNotes = async (uid = '') => {
   const { docs } = await getDocs(collectionRef);
 
   for (const doc of docs) {
-    notes.push({ id: uid, ...doc.data() });
+    notes.push({ id: doc.id, ...doc.data() });
   }
 
   return notes;

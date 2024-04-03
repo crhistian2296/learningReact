@@ -15,6 +15,7 @@ const HomePage = () => {
   const onClickNewNote = () => {
     dispatch(startNewNote());
   };
+
   return (
     <JournalLayout>
       {/* <Typography>

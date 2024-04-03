@@ -17,11 +17,13 @@ import {
 } from '../../store/auth';
 import AuthLayout from '../layout/AuthLayout';
 
+const formData = {
+  email: 'user@gmail.com',
+  password: '123456',
+};
+
 const Login = () => {
-  const { email, password, onInputChange } = useForm({
-    email: 'user@gmail.com',
-    password: '123456',
-  });
+  const { email, password, onInputChange } = useForm(formData);
 
   const { status, errorMessage = null } = useSelector(state => state.auth);
   const dispatch = useDispatch();
