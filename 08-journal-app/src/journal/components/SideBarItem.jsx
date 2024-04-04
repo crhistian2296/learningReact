@@ -15,7 +15,7 @@ const SideBarItem = ({ id, date, title, body, imageUrls = [] }) => {
   const dispatch = useDispatch();
 
   const newTitle = useMemo(() =>
-    title.length > 17 ? title.substring(0, 17) + '...' : title
+    title?.length > 17 ? title.substring(0, 17) + '...' : title
   );
 
   const onClickItem = () => {
@@ -39,7 +39,7 @@ const SideBarItem = ({ id, date, title, body, imageUrls = [] }) => {
 
 SideBarItem.propTypes = {
   id: PropTypes.string.isRequired,
-  date: PropTypes.number.isRequired,
+  date: PropTypes.number,
   body: PropTypes.string,
   title: PropTypes.string,
   imageUrls: PropTypes.array,
