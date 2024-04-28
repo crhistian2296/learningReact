@@ -27,4 +27,4 @@ dist-ssr
 .env
 
 # Local instalation
-pnpm-lock.yaml
+./pnpm-lock.yaml
