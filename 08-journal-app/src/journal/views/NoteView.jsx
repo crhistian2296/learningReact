@@ -4,7 +4,11 @@ import { useEffect, useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import { useForm } from '../../hooks/useForm';
-import { setActiveNote, startSavingNote } from '../../store/journal';
+import {
+  setActiveNote,
+  startSavingNote,
+  startUploadingFiles,
+} from '../../store/journal';
 import ImageGallery from '../components/ImageGallery';
 
 const NoteView = () => {
@@ -36,11 +40,11 @@ const NoteView = () => {
   };
 
   const onFileInputChange = ({ target }) => {
-    if (target.files.length > 1) return;
+    if (target.files.length < 1) return;
 
     console.log('Subiendo archivos');
     // todo: Hacer la accion para subir archivos
-    // dispatch(startUploadingFiles(target.files));
+    dispatch(startUploadingFiles(target.files));
   };
 
   return (
@@ -61,7 +65,7 @@ const NoteView = () => {
         <input
           type='file'
           multiple
-          // style={{ display: 'none' }}
+          style={{ display: 'none' }}
           ref={fileInputRef}
           onChange={onFileInputChange}
         />

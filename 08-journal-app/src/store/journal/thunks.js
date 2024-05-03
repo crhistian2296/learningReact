@@ -5,9 +5,11 @@ import {
   savingNewNote,
   setActiveNote,
   setNotes,
+  setPhotosToActiveNote,
   setSaving,
   updateNote,
 } from './';
+import { fileUpload } from './helpers';
 import { loadNotes } from './helpers/loadNotes';
 
 export const startNewNote = () => {
@@ -55,5 +57,15 @@ export const startSavingNote = () => {
     const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
     await setDoc(docRef, noteToFirestore, { merge: true });
     dispatch(updateNote(note));
+  };
+};
+
+export const startUploadingFiles = (files = []) => {
+  return async (dispatch, getState) => {
+    dispatch(setSaving());
+
+    const results = await Promise.all([...files].map(fileUpload));
+
+    dispatch(setPhotosToActiveNote(results));
   };
 };
