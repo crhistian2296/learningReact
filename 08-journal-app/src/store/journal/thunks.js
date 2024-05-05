@@ -18,16 +18,18 @@ export const startNewNote = () => {
     const { uid } = getState().auth;
 
     console.log('start new note');
-    const newNote = {
+    const newNoteData = {
       title: '',
       body: '',
       date: new Date().getTime(),
     };
 
     const newDoc = doc(collection(FirebaseDB, `${uid}/journal/notes`));
-    await setDoc(newDoc, newNote);
+    await setDoc(newDoc, newNoteData);
 
-    await distaptch(addNewEmptyNote(newNote));
+    const newNote = { ...newNoteData, id: newDoc._key.path.segments.at(3) };
+
+    await distaptch(addNewEmptyNote(newNoteData));
     await distaptch(startLoadingNotes(uid));
     await distaptch(setActiveNote(newNote));
   };
