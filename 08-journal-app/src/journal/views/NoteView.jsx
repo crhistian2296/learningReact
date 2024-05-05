@@ -57,9 +57,7 @@ const NoteView = () => {
       className='animate__animated animate__fadeIn animate__faster'
     >
       <Grid item>
-        <Typography fontSize={39} fontWeight='light'>
-          {dateString}
-        </Typography>
+        <Typography variant='h5'>{dateString}</Typography>
       </Grid>
       <Grid item mb={1}>
         <input
@@ -74,10 +72,10 @@ const NoteView = () => {
           sx={{ minWidth: 'fit-content' }}
           onClick={() => fileInputRef.current.click()}
         >
-          <UploadOutlined sx={{ fontSize: 30 }}></UploadOutlined>
+          <UploadOutlined sx={{ fontSize: 26 }}></UploadOutlined>
         </Button>
         <Button disabled={isSaving} onClick={onSaveNote}>
-          <SaveOutlined sx={{ mr: 1, fontSize: 30 }} />
+          <SaveOutlined sx={{ mr: 1, fontSize: 26 }} />
           Guardar
         </Button>
       </Grid>
@@ -108,7 +106,7 @@ const NoteView = () => {
           onChange={onInputChange}
         />
       </Grid>
-      <ImageGallery />
+      {note.imageUrl ?? <ImageGallery images={note.imageUrls} />}
     </Grid>
   );
 };

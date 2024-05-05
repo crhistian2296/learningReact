@@ -8,22 +8,32 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setActiveNote } from '../../store/journal';
 
 const SideBarItem = ({ id, date, title, body, imageUrls = [] }) => {
   const dispatch = useDispatch();
 
+  const { active } = useSelector(state => state.journal);
+
   const newTitle = useMemo(() =>
     title?.length > 17 ? title.substring(0, 17) + '...' : title
   );
+
+  const isActive = () => active?.id === id;
+  const activeElement = isActive();
 
   const onClickItem = () => {
     dispatch(setActiveNote({ id, date, title, body, imageUrls }));
   };
 
   return (
-    <ListItem key={id} disablePadding onClick={() => onClickItem()}>
+    <ListItem
+      key={id}
+      disabled={activeElement}
+      disablePadding
+      onClick={() => onClickItem()}
+    >
       <ListItemButton>
         <ListItemIcon>
           <TurnedInNot />

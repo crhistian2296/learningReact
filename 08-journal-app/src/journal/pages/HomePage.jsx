@@ -37,10 +37,10 @@ const HomePage = () => {
         sx={{
           color: 'white',
           backgroundColor: 'error.main',
+          transition: 'opacity 300ms',
           ':hover': {
             backgroundColor: 'error.main',
             opacity: 0.7,
-            animation: 'opacity 300ms',
           },
           position: 'fixed',
           right: 50,

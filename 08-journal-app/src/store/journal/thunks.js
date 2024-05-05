@@ -9,8 +9,7 @@ import {
   setSaving,
   updateNote,
 } from './';
-import { fileUpload } from './helpers';
-import { loadNotes } from './helpers/loadNotes';
+import { fileUpload, loadNotes } from './helpers';
 
 export const startNewNote = () => {
   return async (distaptch, getState) => {
@@ -29,6 +28,7 @@ export const startNewNote = () => {
     await setDoc(newDoc, newNote);
 
     await distaptch(addNewEmptyNote(newNote));
+    await distaptch(startLoadingNotes(uid));
     await distaptch(setActiveNote(newNote));
   };
 };

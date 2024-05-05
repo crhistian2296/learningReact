@@ -35,7 +35,7 @@ const NavBar = ({ drawerWidth }) => {
           justifyContent='space-between'
           alignItems='center'
         >
-          <Typography variant='h6' noWrap component='div'>
+          <Typography variant='h1' fontSize='40px' noWrap component='div'>
             JournalApp
           </Typography>
           <IconButton onClick={() => onLogout()} color='error'>
