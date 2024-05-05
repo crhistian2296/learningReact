@@ -6,10 +6,12 @@ import Swal from 'sweetalert2';
 import { useForm } from '../../hooks/useForm';
 import {
   setActiveNote,
+  startDeletingNote,
   startSavingNote,
   startUploadingFiles,
 } from '../../store/journal';
 import ImageGallery from '../components/ImageGallery';
+import { DeleteOutline } from '@mui/icons-material';
 
 const NoteView = () => {
   const {
@@ -43,8 +45,14 @@ const NoteView = () => {
     if (target.files.length < 1) return;
 
     console.log('Subiendo archivos');
-    // todo: Hacer la accion para subir archivos
+
     dispatch(startUploadingFiles(target.files));
+  };
+
+  const onDelete = () => {
+    const noteTitle = note.title;
+    dispatch(startDeletingNote());
+    Swal.fire('Nota eliminada', `"${noteTitle} ha sido eliminada"`, 'success');
   };
 
   return (
@@ -105,6 +113,12 @@ const NoteView = () => {
           value={body}
           onChange={onInputChange}
         />
+      </Grid>
+      <Grid container justifyContent='end'>
+        <Button onClick={onDelete} color='error' sx={{ mt: 2 }}>
+          <DeleteOutline />
+          Borrar
+        </Button>
       </Grid>
       {note.imageUrl ?? <ImageGallery images={note.imageUrls} />}
     </Grid>

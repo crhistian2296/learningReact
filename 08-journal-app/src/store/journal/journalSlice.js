@@ -47,7 +47,7 @@ export const journalSlice = createSlice({
       state.notes = state.notes.map(note =>
         note.id === action.payload.id ? action.payload : note
       );
-      state.messageSaved = `${action.payload.title}, has been updated`;
+      state.messageSaved = `"${action.payload.title}", ha sido actualizada`;
     },
     clearNotesLogout: state => {
       state.isSaving = false;
@@ -55,7 +55,11 @@ export const journalSlice = createSlice({
       state.notes = [];
       state.active = null;
     },
-    deleteNoteById: (state, action) => {},
+    deleteNoteById: (state, action) => {
+      state.isSaving = false;
+      state.active = null;
+      state.notes = state.notes.filter(note => note.id !== action.payload);
+    },
   },
 });
 
