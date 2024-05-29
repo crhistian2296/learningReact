@@ -10,14 +10,14 @@ import { checkingCredentials, login, logout } from './authSlice';
 export const checkingAuthentication = (email, password) => {
   return async dispatch => {
     dispatch(checkingCredentials());
-    console.log('Checking credentials');
+    console.debug('Checking credentials');
   };
 };
 
 export const startGoogleSignIn = token => {
   return async dispatch => {
     dispatch(checkingCredentials());
-    console.log('Checking Google sign in');
+    console.debug('Checking Google sign in');
 
     const result = await signInWithGoogle();
 
@@ -33,29 +33,27 @@ export const startCreatingUserWithEmailAndPassword = ({
 }) => {
   return async dispatch => {
     dispatch(checkingCredentials());
-    console.log('Checking with email and password');
+    console.debug('Checking with email and password');
 
-    const { ok, uid, photoURL, errorMessage } =
-      await registerUserWithEmailPassword({
-        email,
-        password,
-        displayName,
-      });
-    if (!ok) return dispatch(logout({ errorMessage }));
-    return dispatch(login({ displayName, uid, email, photoURL }));
+    const result = await registerUserWithEmailPassword({
+      email,
+      password,
+      displayName,
+    });
+    if (!result?.ok) return dispatch(logout(result));
+    return dispatch(login(result));
   };
 };
 
 export const startLoginWithEmailAndPassword = ({ email, password }) => {
   return async dispatch => {
     dispatch(checkingCredentials());
-    console.log({ email, password });
+    console.debug({ email, password });
 
-    const { ok, uid, photoURL, errorMessage, displayName } =
-      await signInUserWithEmailAndPassword({ email, password });
+    const result = await signInUserWithEmailAndPassword({ email, password });
 
-    if (!ok) return dispatch(logout({ errorMessage }));
-    return dispatch(login({ displayName, uid, email, photoURL }));
+    if (!result?.ok) return dispatch(logout(result));
+    return dispatch(login(result));
   };
 };
 
@@ -66,7 +64,7 @@ export const startLogOut = () => {
       dispatch(clearNotesLogout());
       dispatch(logout());
     } catch (error) {
-      console.log(error);
+      console.debug(error);
     }
   };
 };

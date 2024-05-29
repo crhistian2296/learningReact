@@ -27,7 +27,7 @@ export const registerUserWithEmailPassword = async ({
   displayName,
 }) => {
   try {
-    console.log('creating user...');
+    console.debug('creating user...');
 
     const resp = await createUserWithEmailAndPassword(
       FirebaseAuth,
@@ -40,7 +40,7 @@ export const registerUserWithEmailPassword = async ({
 
     return { ok: true, email, displayName, uid, photoURL };
   } catch (error) {
-    console.log(error);
+    console.debug(error);
     return { ok: false, errorMessage: error.message };
   }
 };

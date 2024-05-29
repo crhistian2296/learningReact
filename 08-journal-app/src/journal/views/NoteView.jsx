@@ -1,4 +1,8 @@
-import { SaveOutlined, UploadOutlined } from '@mui/icons-material';
+import {
+  DeleteOutline,
+  SaveOutlined,
+  UploadOutlined,
+} from '@mui/icons-material';
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import { useEffect, useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +15,6 @@ import {
   startUploadingFiles,
 } from '../../store/journal';
 import ImageGallery from '../components/ImageGallery';
-import { DeleteOutline } from '@mui/icons-material';
 
 const NoteView = () => {
   const {
@@ -44,7 +47,7 @@ const NoteView = () => {
   const onFileInputChange = ({ target }) => {
     if (target.files.length < 1) return;
 
-    console.log('Subiendo archivos');
+    console.debug('Subiendo archivos');
 
     dispatch(startUploadingFiles(target.files));
   };

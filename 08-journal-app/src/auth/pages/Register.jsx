@@ -51,7 +51,7 @@ const Register = () => {
     e.preventDefault();
     setFormSubmited(true);
     if (!isFormValid) return;
-    console.log(formState);
+    console.debug(formState);
     dispatch(startCreatingUserWithEmailAndPassword(formState));
   };
 

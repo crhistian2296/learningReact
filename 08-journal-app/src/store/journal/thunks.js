@@ -18,7 +18,7 @@ export const startNewNote = () => {
 
     const { uid } = getState().auth;
 
-    console.log('start new note');
+    console.debug('start new note');
     const newNoteData = {
       title: '',
       body: '',
@@ -46,7 +46,7 @@ export const startLoadingNotes = () => {
 
     if (!uid) return new Error('uid does not exist');
     const notes = await loadNotes(uid);
-    // console.log(notes);
+    // console.debug(notes);
 
     await dispatch(setNotes(notes));
   };
