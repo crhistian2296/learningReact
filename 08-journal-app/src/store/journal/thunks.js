@@ -13,8 +13,8 @@ import {
 import { fileUpload, loadNotes } from './helpers';
 
 export const startNewNote = () => {
-  return async (distaptch, getState) => {
-    await distaptch(savingNewNote());
+  return async (dispatch, getState) => {
+    await dispatch(savingNewNote());
 
     const { uid } = getState().auth;
 
@@ -34,9 +34,9 @@ export const startNewNote = () => {
       id: newDoc._key.path.segments.at(3),
     };
 
-    await distaptch(addNewEmptyNote(newNoteData));
-    await distaptch(startLoadingNotes(uid));
-    await distaptch(setActiveNote(newNote));
+    await dispatch(addNewEmptyNote(newNoteData));
+    await dispatch(startLoadingNotes(uid));
+    await dispatch(setActiveNote(newNote));
   };
 };
 

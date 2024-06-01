@@ -22,7 +22,7 @@ import { demoUser } from '../../fixtures/authFixtures';
 
 vitest.mock('../../../src/firebase/provider.js');
 
-describe('Pruebas en los thunks', () => {
+describe('Pruebas en los auth thunks', () => {
   const dispatch = vitest.fn();
 
   beforeEach(() => vitest.clearAllMocks());
