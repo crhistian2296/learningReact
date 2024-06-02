@@ -25,6 +25,7 @@ dist-ssr
 
 # Enviroment variables
 .env
+.env.test
 
 # Local instalation
 pnpm-lock.yaml
