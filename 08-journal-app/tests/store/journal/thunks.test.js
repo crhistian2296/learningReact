@@ -5,17 +5,20 @@ import {
   addNewEmptyNote,
   savingNewNote,
   setActiveNote,
+  setNotes,
+  startLoadingNotes,
   startNewNote,
 } from '../../../src/store/journal';
+import { loadNotes } from '../../../src/store/journal/helpers';
+vitest.mock('../../../src/store/journal/helpers/loadNotes.js');
 
 describe('Pruebas en journal thunks', () => {
   const dispatch = vitest.fn();
   const getState = vitest.fn();
+  const uid = 'TEST-UID';
   beforeEach(() => vitest.clearAllMocks());
 
   test('startNewNote debe de crear una nueva nota vacia', async () => {
-    const uid = 'TEST-UID';
-
     getState.mockReturnValue({ auth: { uid } });
     await startNewNote()(dispatch, getState);
 
@@ -42,5 +45,22 @@ describe('Pruebas en journal thunks', () => {
     const collectionRef = collection(FirebaseDB, `${uid}/journal/notes`);
     const { docs } = await getDocs(collectionRef);
     await Promise.all(docs.map(({ ref }) => deleteDoc(ref)));
+  });
+
+  test('startLoadingNotes debe de cargar todas las notas del usuario', async () => {
+    const notes = [
+      {
+        title: '',
+        body: '',
+        date: new Date().getTime(),
+        imageUrls: [],
+      },
+    ];
+
+    getState.mockReturnValue({ auth: { uid } });
+    await loadNotes.mockReturnValue(notes);
+    await startLoadingNotes()(dispatch, getState);
+
+    expect(dispatch).toHaveBeenCalledWith(setNotes(notes));
   });
 });
