@@ -6,31 +6,6 @@ import Login from '../../../src/auth/pages/LoginScreen';
 import { store } from '../../../src/store';
 import { startLoginWithEmailAndPassword } from '../../../src/store/auth';
 
-// const mockStartGoogleSignIn = vitest.fn();
-// const mockStartLoginWithEmailPassword = vitest.fn();
-
-// vitest.mock('../../../src/store/auth/thunks.js', () => ({
-//   startLoginWithEmailPassword: ({ email, password}) =>
-//   }));
-
-// Mock de ../../../src/store/auth/thunks.js
-// vi.mock('../../../src/store/auth/thunks.js', async () => {
-//   const actual = await vi.importActual('../../../src/store/auth/thunks.js');
-//   return {
-//     ...actual,
-//     startLoginWithEmailPassword: { email, password },
-//   };
-// });
-
-// Mock de react-redux
-vi.mock('react-redux', async () => {
-  const actual = await vi.importActual('react-redux');
-  return {
-    ...actual,
-    dispatch: () => fn => fn(),
-  };
-});
-
 describe('Pruebas en LoginScreen', () => {
   test('Debe de mostrar correctamente LoginScreen', () => {
     render(
@@ -55,6 +30,7 @@ describe('Pruebas en LoginScreen', () => {
 
     const googleBtn = screen.getByLabelText('google-btn');
     fireEvent.click(googleBtn);
+
     expect(store.getState().auth.status).toBe('checking');
   });
 
@@ -69,6 +45,7 @@ describe('Pruebas en LoginScreen', () => {
         </MemoryRouter>
       </Provider>
     );
+
     const emailField = screen.getByRole('textbox', { name: 'mail' });
     fireEvent.change(emailField, { target: { name: 'email', value: email } });
 
