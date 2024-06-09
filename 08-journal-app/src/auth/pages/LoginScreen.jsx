@@ -46,6 +46,7 @@ const Login = () => {
   return (
     <AuthLayout title='Login'>
       <form
+        aria-label='submit-form'
         onSubmit={onSubmit}
         className='animate__animated animate__fadeIn animate__faster'
       >
@@ -68,6 +69,7 @@ const Login = () => {
               fullWidth
               autoComplete='current-password'
               name='password'
+              inputProps={{ 'data-testid': 'password' }}
               value={password}
               onChange={onInputChange}
             />
@@ -96,6 +98,7 @@ const Login = () => {
             <Button
               disabled={isAuthenticating}
               onClick={onGoogleSignIn}
+              aria-label='google-btn'
               variant='contained'
               fullWidth
             >
