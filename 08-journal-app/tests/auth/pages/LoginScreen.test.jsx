@@ -1,10 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
-import { describe, expect, test, vitest, vi } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import Login from '../../../src/auth/pages/LoginScreen';
 import { store } from '../../../src/store';
-import { startLoginWithEmailAndPassword } from '../../../src/store/auth';
 
 describe('Pruebas en LoginScreen', () => {
   test('Debe de mostrar correctamente LoginScreen', () => {
