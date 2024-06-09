@@ -61,7 +61,6 @@ const Register = () => {
         onSubmit={e => onSubmit(e)}
         className='animate__animated animate__fadeIn animate__faster'
       >
-        <h1>Is form valid?: {String(isFormValid)} </h1>
         <Grid container>
           <Grid item xs={12} mt={2}>
             <TextField
