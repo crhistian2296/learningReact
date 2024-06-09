@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { startLogOut } from '../../store/auth/thunks';
 
-const NavBar = ({ drawerWidth }) => {
+const NavBar = ({ drawerWidth, setdrawerWidth }) => {
   const dispatch = useDispatch();
 
   const onLogout = () => {
@@ -22,9 +22,10 @@ const NavBar = ({ drawerWidth }) => {
     >
       <Toolbar>
         <IconButton
+          onClick={() => setdrawerWidth(240)}
           color='inherit'
           edge='start'
-          sx={{ mr: 2, display: { sm: 'none' } }}
+          sx={{ mr: 2 }}
         >
           <MenuOutlined />
         </IconButton>
@@ -49,6 +50,7 @@ const NavBar = ({ drawerWidth }) => {
 
 NavBar.propTypes = {
   drawerWidth: PropTypes.number.isRequired,
+  setdrawerWidth: PropTypes.func.isRequired,
 };
 
 export default NavBar;
