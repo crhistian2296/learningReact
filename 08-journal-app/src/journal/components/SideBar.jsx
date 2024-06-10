@@ -20,7 +20,10 @@ const SideBar = ({ drawerWidth = 240, setdrawerWidth }) => {
     displayName.at(0).toUpperCase() + displayName.slice(1).trim();
 
   return (
-    <Box component='nav' sx={{ width: { sm: drawerWidth } }}>
+    <Box
+      component='nav'
+      sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+    >
       <Drawer
         variant='permanent'
         open
