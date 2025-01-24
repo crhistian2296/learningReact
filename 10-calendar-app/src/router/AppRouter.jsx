@@ -1,9 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { LoginPage } from '../auth';
-import { CalendarPage } from '../calendar';
+import { CalendarPage } from '../calendar/pages/CalendarPage';
 
 const AppRouter = () => {
-  const authStatus = 'not-authenticated';
+  const authStatus = 'authenticated'; // 'authenticated' | 'not-authenticated'
   return (
     <>
       <Routes>
