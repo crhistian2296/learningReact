@@ -1,4 +1,5 @@
 import { addHours } from 'date-fns';
+import { useState } from 'react';
 import { Calendar } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { CalendarEvent, Navbar } from '../';
@@ -30,6 +31,21 @@ export const CalendarPage = () => {
     return { style };
   };
 
+  const [view, setView] = useState(localStorage.getItem('lastView') ?? 'month');
+
+  const onDoubleClick = event => {
+    console.log('onDoubleClick:', event);
+  };
+
+  const onSelect = event => {
+    console.log('click: ', event);
+  };
+
+  const onViewChanged = event => {
+    setView(event);
+    localStorage.setItem('lastView', event);
+  };
+
   return (
     <>
       <Navbar />
@@ -46,6 +62,10 @@ export const CalendarPage = () => {
         components={{
           event: CalendarEvent,
         }}
+        defaultView={view}
+        onDoubleClickEvent={onDoubleClick}
+        onSelectEvent={onSelect}
+        onView={onViewChanged}
       />
     </>
   );
